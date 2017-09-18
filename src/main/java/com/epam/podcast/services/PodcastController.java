@@ -9,27 +9,25 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 
-/**
- * Created by Ivan_Spresov on 9/6/2017.
- */
 @RestController
 @RequestMapping("/podcasts")
 @Api(value="podcasts", description="Podcasts services")
 public class PodcastController
 {
+    private static final String WWW_EXAMPLE_COM = "www.example.com";
+    private static final String EXAMPLE_TEXT = "example text";
+
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<?> add(@PathVariable Long id, @RequestBody Podcast input)
-    {
-        Podcast result = new Podcast(id, "new Podcast", "www.example.com", "", "example text");
+    public ResponseEntity<?> add(@PathVariable Long id, @RequestBody Podcast input) {
+        Podcast result = new Podcast(id, "new Podcast", WWW_EXAMPLE_COM, "", EXAMPLE_TEXT);
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest().path("/{id}").buildAndExpand(result.getId()).toUri();
         return ResponseEntity.created(location).build();
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    public ResponseEntity<?> add(@RequestBody Podcast input)
-    {
-        Podcast result = new Podcast(1l, "new Podcast1", "www.example.com", "", "example text");
+    public ResponseEntity<?> update(@RequestBody Podcast input) {
+        Podcast result = new Podcast(1l, "new Podcast1", WWW_EXAMPLE_COM, "", EXAMPLE_TEXT);
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest().path("/{id}").buildAndExpand(result.getId()).toUri();
         return ResponseEntity.created(location).build();
@@ -37,8 +35,7 @@ public class PodcastController
 
     @ApiOperation(value = "View the podcast", response = Podcast.class)
     @RequestMapping(method = RequestMethod.GET)
-    public Podcast show(@PathVariable Long id)
-    {
-        return new Podcast(id, "new Podcast", "www.example.com", "", "example text");
+    public Podcast get(@PathVariable Long id) {
+        return new Podcast(id, "new Podcast", WWW_EXAMPLE_COM, "", EXAMPLE_TEXT);
     }
 }

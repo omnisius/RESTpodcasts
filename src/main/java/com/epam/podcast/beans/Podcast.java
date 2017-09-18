@@ -5,7 +5,6 @@ import java.util.Date;
 
 public class Podcast implements Serializable
 {
-    private static final long serialVersionUID = -8039686696076337053L;
     private Long id;
     private String title;
     private String linkOnPodcastpedia;
@@ -14,88 +13,67 @@ public class Podcast implements Serializable
     private Date insertionDate;
 
     public Podcast(Long id, String title, String linkOnPodcastpedia, String feed,
-                   String description)
-    {
+                   String description) {
         this.id = id;
         this.title = title;
         this.linkOnPodcastpedia = linkOnPodcastpedia;
         this.feed = feed;
         this.description = description;
-
     }
 
-    public Podcast()
-    {
+    public Podcast() {
     }
 
-    public static long getSerialVersionUID()
-    {
-        return serialVersionUID;
-    }
-
-    public Long getId()
-    {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Long id)
-    {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getTitle()
-    {
+    public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title)
-    {
+    public void setTitle(String title) {
         this.title = title;
     }
 
-    public String getLinkOnPodcastpedia()
-    {
+    public String getLinkOnPodcastpedia() {
         return linkOnPodcastpedia;
     }
 
-    public void setLinkOnPodcastpedia(String linkOnPodcastpedia)
-    {
+    public void setLinkOnPodcastpedia(String linkOnPodcastpedia) {
         this.linkOnPodcastpedia = linkOnPodcastpedia;
     }
 
-    public String getFeed()
-    {
+    public String getFeed() {
         return feed;
     }
 
-    public void setFeed(String feed)
-    {
+    public void setFeed(String feed) {
         this.feed = feed;
     }
 
-    public String getDescription()
-    {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description)
-    {
+    public void setDescription(String description) {
         this.description = description;
     }
 
-    public Date getInsertionDate()
-    {
+    public Date getInsertionDate() {
         return insertionDate;
     }
 
-    public void setInsertionDate(Date insertionDate)
-    {
+    public void setInsertionDate(Date insertionDate) {
         this.insertionDate = insertionDate;
     }
 
     @Override
-    public boolean equals(Object o)
-    {
+    public boolean equals(Object o) {
         if (this == o)
             return true;
         if (o == null || getClass() != o.getClass())
@@ -103,26 +81,15 @@ public class Podcast implements Serializable
 
         Podcast podcast = (Podcast) o;
 
-        if (getId() != null ? !getId().equals(podcast.getId()) : podcast.getId() != null)
-            return false;
-        if (getTitle() != null ? !getTitle().equals(podcast.getTitle()) : podcast.getTitle() != null)
-            return false;
-        if (getLinkOnPodcastpedia() != null ?
-                !getLinkOnPodcastpedia().equals(podcast.getLinkOnPodcastpedia()) :
-                podcast.getLinkOnPodcastpedia() != null)
-            return false;
-        if (getFeed() != null ? !getFeed().equals(podcast.getFeed()) : podcast.getFeed() != null)
-            return false;
-        if (getDescription() != null ? !getDescription().equals(podcast.getDescription()) : podcast.getDescription() != null)
-            return false;
-        return getInsertionDate() != null ?
-                getInsertionDate().equals(podcast.getInsertionDate()) :
-                podcast.getInsertionDate() == null;
+        return (getId() != null ? getId().equals(podcast.getId()) : podcast.getId() == null)
+                && (getTitle() != null ? getTitle().equals(podcast.getTitle()) : podcast.getTitle() == null)
+                && (getLinkOnPodcastpedia() != null ? getLinkOnPodcastpedia().equals(podcast.getLinkOnPodcastpedia()) : podcast.getLinkOnPodcastpedia() == null)
+                && (getFeed() != null ? getFeed().equals(podcast.getFeed()) : podcast.getFeed() == null) && (getDescription() != null ? getDescription().equals(podcast.getDescription()) : podcast.getDescription() == null)
+                && (getInsertionDate() != null ? getInsertionDate().equals(podcast.getInsertionDate()) : podcast.getInsertionDate() == null);
     }
 
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         int result = getId() != null ? getId().hashCode() : 0;
         result = 31 * result + (getTitle() != null ? getTitle().hashCode() : 0);
         result = 31 * result + (getLinkOnPodcastpedia() != null ? getLinkOnPodcastpedia().hashCode() : 0);

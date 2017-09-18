@@ -21,18 +21,16 @@ public class SwaggerConfig {
                 .paths(regex("/podcasts"))
                 .build()
                 .apiInfo(metaData());
-
     }
 
     private ApiInfo metaData() {
-        ApiInfo apiInfo = new ApiInfo(
+        return new ApiInfo(
                 "Podcast REST API",
                 "Podcast REST API",
                 "1.0",
                 "Terms of service",
-                new Contact("Ivan Spresov", "http://nivafex.com", "ivan.spresov@gmail.com"),
+                new Contact("Bohdan Bardakov", "http://epam.com", "bogdan.bardakov@gmail.com"),
                 "Apache License Version 2.0",
                 "https://www.apache.org/licenses/LICENSE-2.0");
-        return apiInfo;
     }
 }
