@@ -17,6 +17,7 @@ public class PodcastController {
     private static final String WWW_EXAMPLE_COM = "www.example.com";
     private static final String EXAMPLE_TEXT = "example text";
 
+    @ApiOperation(value = "Add the podcast")
     @RequestMapping(value="/podcasts/{id}", method = RequestMethod.POST)
     public ResponseEntity add(@PathVariable Long id,@RequestBody Podcast input) {
         if (id == null) {
@@ -30,6 +31,7 @@ public class PodcastController {
         return ResponseEntity.created(location).build();
     }
 
+    @ApiOperation(value = "Update the podcast")
     @RequestMapping(value="/podcasts/", method = RequestMethod.PUT)
     public ResponseEntity update(@RequestBody Podcast input) {
         Long id = input.getId();
