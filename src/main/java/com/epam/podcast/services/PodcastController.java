@@ -21,6 +21,8 @@ public class PodcastController {
     public ResponseEntity add(@PathVariable Long id,@RequestBody Podcast input) {
         if (id == null) {
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        } else if (idIsNotInSystem()) {
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
         Podcast result = new Podcast(id, "new Podcast", WWW_EXAMPLE_COM, "", EXAMPLE_TEXT);
         URI location = ServletUriComponentsBuilder
@@ -50,8 +52,15 @@ public class PodcastController {
     @RequestMapping(value = "/podcast/{id}", method = RequestMethod.DELETE)
     public ResponseEntity delete(@PathVariable Long id) {
         if (id == null) {
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        } else if (idIsNotInSystem()) {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity(HttpStatus.OK);
+    }
+
+    private boolean idIsNotInSystem() {
+        //Pseudo-method
+        return false;
     }
 }
